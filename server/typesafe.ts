@@ -1,4 +1,4 @@
-import {ACTIONS,INTERACTIONS,MOVEMENTS,TRIGGERS,VIEWS,type Action,type ControlFrame,type Decision} from '../src/types';
+import {ACTIONS,INTERACTIONS,MOVEMENTS,TRIGGERS,VIEWS,type Action,type ControlFrame,type Decision} from '../src/types.js';
 
 let runtimeKey:string|null=null,requestsPaused=false;
 const activeRequests=new Set<AbortController>();
