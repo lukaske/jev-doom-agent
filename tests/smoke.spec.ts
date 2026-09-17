@@ -14,6 +14,12 @@ test('single easy game loads a dense enemy spawn and essential controls',async({
  const player=await page.evaluate(()=>(window.__ENGINE_STATES__?.[0]as any)?.player);
  expect(player).toMatchObject({health:100,armor:100});
  expect(player.ammo.shells).toBeGreaterThanOrEqual(32);
+ const tickBefore=await page.evaluate(()=>(window.__ENGINE_STATES__?.[0]as any)?.engine_state.gametic);
+ await page.waitForTimeout(500);
+ const tickWhileWaiting=await page.evaluate(()=>(window.__ENGINE_STATES__?.[0]as any)?.engine_state.gametic);
+ expect(tickWhileWaiting).toBe(tickBefore);
+ await page.getByRole('button',{name:'RUN',exact:true}).click();
+ await expect.poll(()=>page.evaluate(()=>(window.__ENGINE_STATES__?.[0]as any)?.engine_state.gametic)).toBeGreaterThan(tickBefore);
  const ammo=()=>page.evaluate(()=>Object.values((window.__ENGINE_STATES__?.[0]as any).player.ammo).reduce((sum:number,value:any)=>sum+value,0));
  const before=await ammo();
  for(let step=0;step<8&&(await ammo())===before;step++){await page.locator('[data-control="SHOOT"]').click();await page.waitForTimeout(350)}

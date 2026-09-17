@@ -38,6 +38,11 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetControls(int controls)
     promptfps_controls = controls;
 }
 
+EMSCRIPTEN_KEEPALIVE void PromptFPS_SetPaused(int should_pause)
+{
+    paused = should_pause != 0;
+}
+
 static int AddEntity(char *out, size_t size, int n, int first, int id,
                      mobj_t *player, mobj_t *mo)
 {
@@ -81,7 +86,7 @@ EMSCRIPTEN_KEEPALIVE const char *PromptFPS_Observation(void)
         "\"vx\":%d,\"vy\":%d,\"angle\":%u,\"kills\":%d},"
         "\"engine_state\":{\"gametic\":%d,\"gamestate\":%d,\"paused\":%s,\"controls\":%d},"
         "\"visible_enemies\":[",
-        p->health, p->armorpoints, (int) p->readyweapon, p->ammo[am_clip],
+        p->mo->health, p->armorpoints, (int) p->readyweapon, p->ammo[am_clip],
         p->ammo[am_shell], p->ammo[am_misl], p->ammo[am_cell], p->damagecount,
         p->damagecount > 0 ? "true" : "false", p->mo->x >> FRACBITS,
         p->mo->y >> FRACBITS, p->mo->z >> FRACBITS, p->mo->momx >> FRACBITS,
