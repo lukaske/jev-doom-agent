@@ -156,7 +156,7 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
     player_t *p;
     mobj_t *enemy;
     static const int offsets[][2] = {
-        {224, 0}
+        {224, 0}, {256, 64}, {256, -64}, {320, 0}
     };
     unsigned int i;
     G_InitNew(sk_baby, 1, 1);
@@ -173,7 +173,7 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
                             ONFLOORZ, MT_TROOP);
         if (enemy != NULL)
         {
-            enemy->health = 10;
+            enemy->health = 30;
             enemy->target = p->mo;
             enemy->threshold = 100;
             enemy->reactiontime = 70;

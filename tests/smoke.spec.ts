@@ -9,9 +9,9 @@ test('single easy game loads a dense enemy spawn and essential controls',async({
  await expect(page.locator('.api-console')).toHaveCount(1);
  await expect(page.locator('.api-console pre')).toHaveCSS('overflow','auto');
  const enemies=await page.evaluate(()=>((window.__ENGINE_STATES__?.[0]as any)?.world.entities??[]).filter((entity:any)=>entity.enemy&&entity.health>0).length);
- expect(enemies).toBeGreaterThanOrEqual(1);
- const weakEnemies=await page.evaluate(()=>((window.__ENGINE_STATES__?.[0]as any)?.world.entities??[]).filter((entity:any)=>entity.enemy&&entity.health>0&&entity.health<=10).length);
- expect(weakEnemies).toBe(1);
+ expect(enemies).toBeGreaterThanOrEqual(4);
+ const encounterEnemies=await page.evaluate(()=>((window.__ENGINE_STATES__?.[0]as any)?.world.entities??[]).filter((entity:any)=>entity.enemy&&entity.health===30).length);
+ expect(encounterEnemies).toBe(4);
  const player=await page.evaluate(()=>(window.__ENGINE_STATES__?.[0]as any)?.player);
  expect(player).toMatchObject({health:100,armor:100});
  expect(player.ammo.shells).toBeGreaterThanOrEqual(32);
