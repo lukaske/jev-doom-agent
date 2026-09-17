@@ -1,0 +1,11 @@
+.git
+.emsdk
+.tooling
+engine/build
+node_modules
+artifacts
+test-results
+tests
+scripts
+vendor
+*.mp4
