@@ -152,7 +152,8 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
     mobj_t *enemy;
     static const int offsets[][2] = {
         {192, 0}, {224, 48}, {224, -48}, {256, 80},
-        {256, -80}, {288, 112}, {288, -112}, {320, 0}
+        {256, -80}, {288, 112}, {288, -112}, {320, 0},
+        {320, 144}, {320, -144}, {352, 72}, {352, -72}
     };
     unsigned int i;
     G_InitNew(sk_baby, 1, 1);
@@ -168,6 +169,7 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
                             ONFLOORZ, MT_TROOP);
         if (enemy != NULL)
         {
+            enemy->health = 10;
             enemy->target = p->mo;
             enemy->threshold = 100;
             P_SetMobjState(enemy, enemy->info->seestate);

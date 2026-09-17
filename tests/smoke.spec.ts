@@ -8,7 +8,9 @@ test('single easy game loads a dense enemy spawn and essential controls',async({
  await expect(page.locator('.control-pad button')).toHaveCount(4);
  await expect(page.locator('.api-console')).toHaveCount(1);
  const enemies=await page.evaluate(()=>((window.__ENGINE_STATES__?.[0]as any)?.world.entities??[]).filter((entity:any)=>entity.enemy&&entity.health>0).length);
- expect(enemies).toBeGreaterThanOrEqual(8);
+ expect(enemies).toBeGreaterThanOrEqual(12);
+ const weakEnemies=await page.evaluate(()=>((window.__ENGINE_STATES__?.[0]as any)?.world.entities??[]).filter((entity:any)=>entity.enemy&&entity.health>0&&entity.health<=10).length);
+ expect(weakEnemies).toBeGreaterThanOrEqual(12);
  const ammo=()=>page.evaluate(()=>Object.values((window.__ENGINE_STATES__?.[0]as any).player.ammo).reduce((sum:number,value:any)=>sum+value,0));
  const before=await ammo();
  for(let step=0;step<8&&(await ammo())===before;step++){await page.locator('[data-control="SHOOT"]').click();await page.waitForTimeout(350)}
