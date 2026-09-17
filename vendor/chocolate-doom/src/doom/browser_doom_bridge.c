@@ -159,7 +159,8 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
     G_InitNew(sk_baby, 1, 1);
     p = &players[consoleplayer];
     if (p->mo == NULL) return;
-    p->health = 42; p->mo->health = 42; p->armorpoints = 10; p->ammo[am_shell] = 8;
+    p->health = 100; p->mo->health = 100; p->armorpoints = 100;
+    p->armortype = 1; p->ammo[am_shell] = 32;
     // Start the experiment in an observable combat situation instead of an
     // empty spawn. This is world setup only; no controller action is scripted.
     for (i = 0; i < sizeof(offsets) / sizeof(offsets[0]); ++i)
@@ -172,6 +173,7 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
             enemy->health = 10;
             enemy->target = p->mo;
             enemy->threshold = 100;
+            enemy->reactiontime = 70;
             P_SetMobjState(enemy, enemy->info->seestate);
         }
     }
