@@ -151,9 +151,7 @@ EMSCRIPTEN_KEEPALIVE void PromptFPS_SetStart(void)
     player_t *p;
     mobj_t *enemy;
     static const int offsets[][2] = {
-        {192, 0}, {224, 48}, {224, -48}, {256, 80},
-        {256, -80}, {288, 112}, {288, -112}, {320, 0},
-        {320, 144}, {320, -144}, {352, 72}, {352, -72}
+        {224, 0}, {256, 64}, {256, -64}, {320, 0}
     };
     unsigned int i;
     G_InitNew(sk_baby, 1, 1);
