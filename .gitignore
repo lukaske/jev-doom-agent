@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+artifacts/frames/
+.emsdk/
+.tooling/
+engine/build/
+*.wad
+!public/iwads/freedoom2.wad

@@ -1,0 +1,12 @@
+{
+  "mode": "offline",
+  "model_label": "OFFLINE SIMULATED POLICY — NOT JEV",
+  "engine": "Chocolate Doom 3.1.1 WebAssembly fork",
+  "content": "Freedoom 0.13.0",
+  "engine_state_bridge": true,
+  "provenance": "Ordered-frame capture of two real Chocolate Doom WASM instances; no TypeSafe request was represented as live.",
+  "seed": 1337,
+  "output_duration_seconds": 10,
+  "frame_count": 300,
+  "generated_at": "2026-09-17T04:10:43.204Z"
+}

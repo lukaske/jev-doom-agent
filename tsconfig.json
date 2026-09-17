@@ -1,0 +1,1 @@
+{"compilerOptions":{"target":"ES2022","useDefineForClassFields":true,"module":"ESNext","lib":["ES2022","DOM"],"skipLibCheck":true,"moduleResolution":"bundler","allowImportingTsExtensions":true,"noEmit":true,"strict":true,"types":["node","vitest/globals"]},"include":["src","server","scripts","tests","playwright.config.ts"]}

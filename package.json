@@ -1,0 +1,24 @@
+{
+  "name": "prompt-fps",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "start": "tsx server/index.ts",
+    "build": "tsc --noEmit && vite build",
+    "test": "vitest run",
+    "smoke": "playwright test",
+    "video": "tsx scripts/generate-video.ts",
+    "verify:video": "tsx scripts/verify-video.ts",
+    "build:wasm": "bash engine/scripts/build_wasm.sh"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^24.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.0.0",
+    "vitest": "^4.0.0"
+  }
+}
